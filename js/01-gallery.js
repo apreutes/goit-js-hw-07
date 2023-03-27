@@ -1,5 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 
+// Додаємо галерею
+
 const galleryItemsList = document.querySelector(".gallery");
 const gallery = createPicGallery(galleryItems);
 
@@ -23,5 +25,21 @@ function createPicGallery(galleryItems) {
     })
     .join("");
 }
+
+// Вішаємо слухача, заборона браузеру на скачку і отримання урла великого зображення
+
+galleryItemsList.addEventListener("click", onPicClick);
+const onePic = galleryItemsList.querySelector(".gallery__image");
+
+function onPicClick(evt) {
+  evt.preventDefault();
+  // if (!evt.target.classList.contains("gallery__link")) {
+  //   return;
+  // }
+  const urlLargeImg = onePic.dataset.source;
+  console.log(urlLargeImg);
+}
+
+//
 
 console.log(galleryItems);
