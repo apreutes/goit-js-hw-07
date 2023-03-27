@@ -40,11 +40,21 @@ function onPicClick(evt) {
   // Модальне вікно з бібліотеки
 
   const instance = basicLightbox.create(`
-  <img src="${evt.target.dataset.source}" width="800" height="600">
+  <img src="${evt.target.dataset.source}">
       `);
 
   instance.show();
-  // console.log(evt.target.dataset.source);
+
+  // Закриття з клавіатури
+  if (instance.show()) {
+    window.addEventListener("keydown", onEscKeyPress);
+
+    function onEscKeyPress(evt) {
+      if (evt.key === "Escape") {
+        instance.close();
+      }
+    }
+  }
 }
 
 console.log(galleryItems);
