@@ -29,17 +29,22 @@ function createPicGallery(galleryItems) {
 // Вішаємо слухача, заборона браузеру на скачку і отримання урла великого зображення
 
 galleryItemsList.addEventListener("click", onPicClick);
-const onePic = galleryItemsList.querySelector(".gallery__image");
 
 function onPicClick(evt) {
   evt.preventDefault();
-  // if (!evt.target.classList.contains("gallery__link")) {
-  //   return;
-  // }
-  const urlLargeImg = onePic.dataset.source;
-  console.log(urlLargeImg);
-}
+  const onePic = galleryItemsList.querySelector(".gallery__image");
+  if (!onePic) {
+    return;
+  }
 
-//
+  // Модальне вікно з бібліотеки
+
+  const instance = basicLightbox.create(`
+  <img src="${evt.target.dataset.source}" width="800" height="600">
+      `);
+
+  instance.show();
+  // console.log(evt.target.dataset.source);
+}
 
 console.log(galleryItems);
