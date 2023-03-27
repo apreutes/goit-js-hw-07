@@ -46,6 +46,7 @@ function onPicClick(evt) {
   instance.show();
 
   // Закриття з клавіатури
+  
   if (instance.show()) {
     window.addEventListener("keydown", onEscKeyPress);
 
